@@ -15,19 +15,23 @@
             color: #ffffff;
         }
 
+        /* Mengubah div menjadi blok link */
         .project-card {
             background-color: #121212;
             border-radius: 24px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
+            text-decoration: none; /* Menghapus garis bawah link */
+            border: 1px solid transparent;
         }
 
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .image-container {
@@ -76,13 +80,19 @@
             transition: gap 0.3s ease;
         }
 
-        .explore-link:hover {
+        .project-card:hover .explore-link {
             gap: 12px;
         }
 
-        .forensic-ui-box {
-            background: radial-gradient(circle at top right, #1a1a1a, #0a0a0a);
-            border: 1px solid #1f1f1f;
+        /* Animasi Scanline untuk kesan forensic */
+        .scanline-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 4px, 3px 100%;
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -95,7 +105,6 @@
             </div>
             <h1 class="text-xl font-extrabold tracking-tighter uppercase italic">TechCore<span class="text-red-600 font-black">Forensic</span></h1>
         </div>
-     
     </header>
 
     <main class="max-w-7xl mx-auto">
@@ -104,9 +113,10 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             
             <!-- Proyek 1: NeuroTrack -->
-            <div class="project-card">
+            <a href="https://andriozite.github.io/neuro/" target="_blank" class="project-card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=800&auto=format&fit=crop" alt="NeuroTrack" class="project-image">
+                    <div class="scanline-overlay"></div>
                 </div>
                 <div class="p-8">
                     <h2 class="text-2xl title-italic mb-2">NeuroTrack</h2>
@@ -114,18 +124,20 @@
                     <p class="text-zinc-400 text-sm leading-relaxed mb-8">
                         Platform diagnostik medis berbasis AI yang menganalisis citra saraf dengan akurasi 98.5%.
                     </p>
-                    <a href="#" class="explore-link text-purple-500">Explore <i class="fas fa-arrow-right"></i></a>
+                    <div class="explore-link text-purple-500">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <!-- Proyek 2: NCG COMMANDER (FIXED IMAGE) -->
-            <div class="project-card">
+            <!-- Proyek 2: NCG COMMANDER -->
+            <a href="https://andriozite.github.io/ncgcommander/" target="_blank" class="project-card">
                 <div class="image-container">
                     <div class="absolute top-4 left-4 z-10">
                         <span class="badge-v">v2.0.1</span>
                     </div>
-                    <!-- Menggunakan gambar infrastruktur server yang lebih reliabel -->
                     <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop" alt="NCG COMMANDER" class="project-image">
+                    <div class="scanline-overlay"></div>
                 </div>
                 <div class="p-8">
                     <h2 class="text-2xl title-italic mb-2">NCG COMMANDER</h2>
@@ -133,14 +145,17 @@
                     <p class="text-zinc-400 text-sm leading-relaxed mb-8">
                         Solusi manajemen aset jaringan real-time dengan integrasi audit trafik dan visualisasi topologi.
                     </p>
-                    <a href="#" class="explore-link text-blue-500">Explore <i class="fas fa-arrow-right"></i></a>
+                    <div class="explore-link text-blue-500">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Proyek 3: ForensicLab_ -->
-            <div class="project-card">
+            <a href="https://andriozite.github.io/forensic/" target="_blank" class="project-card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="ForensicLab" class="project-image">
+                    <div class="scanline-overlay"></div>
                 </div>
                 <div class="p-8">
                     <h2 class="text-2xl title-italic mb-2">ForensicLab_</h2>
@@ -148,20 +163,13 @@
                     <p class="text-zinc-400 text-sm leading-relaxed mb-8">
                         Sistem investigasi citra digital untuk verifikasi autentisitas dan analisis modifikasi pixel.
                     </p>
-                    <a href="#" class="explore-link text-red-500">Explore <i class="fas fa-arrow-right"></i></a>
+                    <div class="explore-link text-red-500">
+                        Explore <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
-            </div>
+            </a>
 
         </div>
-
-       
-
-                    <!-- Scanline effect -->
-                    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 2px, 3px 100%;"></div>
-                </div>
-            </div>
-            
-            
     </main>
 
     <footer class="max-w-7xl mx-auto mt-20 pb-12 text-center border-t border-zinc-900 pt-10">
